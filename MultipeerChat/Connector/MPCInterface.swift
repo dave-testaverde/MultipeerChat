@@ -12,12 +12,9 @@ import SwiftUI
 protocol Connectivity {
     func initImpl(username: String) -> Void
     func isPaired() -> Bool
-    
     func getUsername() -> String
-    
     func sendState(state: SenderState) -> Void
     func getState() -> SenderState
-    
     func disconnect() -> Void
 }
 
@@ -52,7 +49,10 @@ protocol Connectivity {
     }
     
     func getState() -> SenderState {
-        return SenderState(payload: mpcSession!.receivedState)
+        return SenderState(
+            idMPC: mpcSession!.session.connectedPeers[0],
+            payload: mpcSession!.receivedState
+        )
     }
     
     func disconnect() -> Void {

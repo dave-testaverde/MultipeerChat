@@ -29,7 +29,12 @@ struct SenderView: View {
                     }
                     HStack {
                         Button("Send →") {
-                            mpcInterface.sendState(state: SenderState(payload: message))
+                            mpcInterface.sendState(
+                                state: SenderState(
+                                    idMPC: mpcSession.session.connectedPeers[0],
+                                    payload: message
+                                )
+                            )
                         }.buttonStyle(BorderlessButtonStyle())
                             .padding(.horizontal, 30)
                             .padding(.vertical, 10)

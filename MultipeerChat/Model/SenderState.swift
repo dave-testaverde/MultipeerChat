@@ -6,11 +6,14 @@
 //
 
 import Foundation
+import MultipeerConnectivity
 
 class SenderState {
+    private var idMPC: MCPeerID
     private var payload: String
     
-    init(payload: String) {
+    init(idMPC: MCPeerID, payload: String) {
+        self.idMPC = idMPC
         self.payload = payload
     }
     
