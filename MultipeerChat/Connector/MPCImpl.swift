@@ -10,7 +10,7 @@ import os
 
 @Observable class MPCImpl: NSObject {
     private let serviceType = "mpc-service"
-    private var myPeerID: MCPeerID
+    var myPeerID: MCPeerID
     
     public let serviceAdvertiser: MCNearbyServiceAdvertiser
     public let serviceBrowser: MCNearbyServiceBrowser

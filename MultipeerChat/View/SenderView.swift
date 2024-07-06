@@ -31,7 +31,7 @@ struct SenderView: View {
                         Button("Send →") {
                             mpcInterface.sendState(
                                 state: SenderState(
-                                    idMPC: mpcSession.session.connectedPeers[0],
+                                    idMPC: mpcSession.session.myPeerID,
                                     payload: message
                                 )
                             )
