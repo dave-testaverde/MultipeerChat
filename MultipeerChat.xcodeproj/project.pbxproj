@@ -16,7 +16,7 @@
 		553CEE8B2C37D3A300EDEBFC /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553CEE882C37D3A300EDEBFC /* StartView.swift */; };
 		553CEE8D2C37EDBF00EDEBFC /* MPCInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553CEE8C2C37EDBF00EDEBFC /* MPCInterface.swift */; };
 		553CEE902C3855A500EDEBFC /* ListFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553CEE8F2C3855A500EDEBFC /* ListFriend.swift */; };
-		553CEE932C38583A00EDEBFC /* SenderState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553CEE922C38583A00EDEBFC /* SenderState.swift */; };
+		553CEE932C38583A00EDEBFC /* MessageState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553CEE922C38583A00EDEBFC /* MessageState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,7 +34,7 @@
 		553CEE882C37D3A300EDEBFC /* StartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		553CEE8C2C37EDBF00EDEBFC /* MPCInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCInterface.swift; sourceTree = "<group>"; };
 		553CEE8F2C3855A500EDEBFC /* ListFriend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFriend.swift; sourceTree = "<group>"; };
-		553CEE922C38583A00EDEBFC /* SenderState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenderState.swift; sourceTree = "<group>"; };
+		553CEE922C38583A00EDEBFC /* MessageState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,7 +136,7 @@
 		553CEE912C38582000EDEBFC /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				553CEE922C38583A00EDEBFC /* SenderState.swift */,
+				553CEE922C38583A00EDEBFC /* MessageState.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -216,7 +216,7 @@
 				553CEE8D2C37EDBF00EDEBFC /* MPCInterface.swift in Sources */,
 				553CEE602C368D6B00EDEBFC /* MPCImpl.swift in Sources */,
 				553CEE902C3855A500EDEBFC /* ListFriend.swift in Sources */,
-				553CEE932C38583A00EDEBFC /* SenderState.swift in Sources */,
+				553CEE932C38583A00EDEBFC /* MessageState.swift in Sources */,
 				553CEE352C368D2200EDEBFC /* MultipeerConnectorApp.swift in Sources */,
 				553CEE892C37D3A300EDEBFC /* SenderView.swift in Sources */,
 			);

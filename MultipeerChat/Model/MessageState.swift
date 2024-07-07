@@ -8,7 +8,7 @@
 import Foundation
 import MultipeerConnectivity
 
-class SenderState {
+class MessageState {
     private var idMPC: MCPeerID
     private var payload: String
     

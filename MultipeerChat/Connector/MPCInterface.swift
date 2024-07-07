@@ -13,8 +13,8 @@ protocol Connectivity {
     func initImpl(username: String) -> Void
     func isPaired() -> Bool
     func getUsername() -> String
-    func sendState(state: SenderState) -> Void
-    func getState() -> SenderState
+    func sendMessage(state: MessageState) -> Void
+    func recvMessage() -> MessageState
     func disconnect() -> Void
 }
 
@@ -44,12 +44,12 @@ protocol Connectivity {
         return mpcSession!.username
     }
     
-    func sendState(state: SenderState) -> Void {
+    func sendMessage(state: MessageState) -> Void {
         mpcSession!.send(state: state.getPayload())
     }
     
-    func getState() -> SenderState {
-        return SenderState(
+    func recvMessage() -> MessageState {
+        return MessageState(
             idMPC: mpcSession!.session.connectedPeers[0],
             payload: mpcSession!.receivedState
         )

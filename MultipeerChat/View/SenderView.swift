@@ -29,8 +29,8 @@ struct SenderView: View {
                     }
                     HStack {
                         Button("Send →") {
-                            mpcInterface.sendState(
-                                state: SenderState(
+                            mpcInterface.sendMessage(
+                                state: MessageState(
                                     idMPC: mpcSession.session.myPeerID,
                                     payload: message
                                 )
@@ -62,7 +62,7 @@ struct SenderView: View {
                         Spacer()
                     }
                     HStack {
-                        Text(mpcInterface.getState().getPayload())
+                        Text(mpcInterface.recvMessage().getPayload())
                             .padding([.horizontal], 75.0)
                             .padding(.bottom, 24)
                             .foregroundColor(Color.blue)

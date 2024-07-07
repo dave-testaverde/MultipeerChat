@@ -9,22 +9,18 @@ import MultipeerConnectivity
 import os
 
 @Observable class MPCImpl: NSObject {
+    
     private let serviceType = "mpc-service"
-    var myPeerID: MCPeerID
     
     public let serviceAdvertiser: MCNearbyServiceAdvertiser
     public let serviceBrowser: MCNearbyServiceBrowser
     public let session: MCSession
-        
+    
     private let log = Logger()
     
-    //Published
+    var myPeerID: MCPeerID
     var availablePeers: [MCPeerID] = []
-    
-    //@Published var receivedMove: Move = .unknown
     var receivedState: String = ""
-    var lastStateSended: String = ""
-
     var recvdInvite: Bool = false
     var recvdInviteFrom: MCPeerID? = nil
     var paired: Bool = false
@@ -54,25 +50,11 @@ import os
         serviceBrowser.stopBrowsingForPeers()
     }
     
-    /*
-     func send(move: Move) {
-        if !session.connectedPeers.isEmpty {
-            log.info("sendMove: \(String(describing: move)) to \(self.session.connectedPeers[0].displayName)")
-            do {
-                try session.send(move.rawValue.data(using: .utf8)!, toPeers: session.connectedPeers, with: .reliable)
-            } catch {
-                log.error("Error sending: \(String(describing: error))")
-            }
-        }
-    }*/
-    
-    // Send State
     func send(state: String) {
         if !session.connectedPeers.isEmpty {
             log.info("sendState: \(String(describing: state)) to \(self.session.connectedPeers[0].displayName)")
             do {
                 try session.send(state.data(using: .utf8)!, toPeers: session.connectedPeers, with: .reliable)
-                lastStateSended = state
             } catch {
                 log.error("Error sending: \(String(describing: error))")
             }
@@ -82,7 +64,6 @@ import os
 
 extension MPCImpl: MCNearbyServiceAdvertiserDelegate {
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didNotStartAdvertisingPeer error: Error) {
-        //TODO: Inform the user something went wrong and try again
         log.error("ServiceAdvertiser didNotStartAdvertisingPeer: \(String(describing: error))")
     }
     
@@ -90,11 +71,8 @@ extension MPCImpl: MCNearbyServiceAdvertiserDelegate {
         log.info("didReceiveInvitationFromPeer \(peerID)")
         
         DispatchQueue.main.async {
-            // Tell PairView to show the invitation alert
             self.recvdInvite = true
-            // Give PairView the peerID of the peer who invited us
             self.recvdInviteFrom = peerID
-            // Give PairView the `invitationHandler` so it can accept/deny the invitation
             self.invitationHandler = invitationHandler
         }
     }
@@ -102,13 +80,11 @@ extension MPCImpl: MCNearbyServiceAdvertiserDelegate {
 
 extension MPCImpl: MCNearbyServiceBrowserDelegate {
     func browser(_ browser: MCNearbyServiceBrowser, didNotStartBrowsingForPeers error: Error) {
-        //TODO: Tell the user something went wrong and try again
         log.error("ServiceBroser didNotStartBrowsingForPeers: \(String(describing: error))")
     }
     
     func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) {
         log.info("ServiceBrowser found peer: \(peerID)")
-        // Add the peer to the list of available peers
         DispatchQueue.main.async {
             print("Append new peer: \(peerID)")
             self.availablePeers.append(peerID)
@@ -117,7 +93,6 @@ extension MPCImpl: MCNearbyServiceBrowserDelegate {
     
     func browser(_ browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {
         log.info("ServiceBrowser lost peer: \(peerID)")
-        // Remove lost peer from list of available peers
         DispatchQueue.main.async {
             self.availablePeers.removeAll(where: {
                 $0 == peerID
@@ -132,23 +107,18 @@ extension MPCImpl: MCSessionDelegate {
         
         switch state {
         case MCSessionState.notConnected:
-            // Peer disconnected
             DispatchQueue.main.async {
                 self.paired = false
             }
-            // Peer disconnected, start accepting invitaions again
             serviceAdvertiser.startAdvertisingPeer()
             break
         case MCSessionState.connected:
-            // Peer connected
             DispatchQueue.main.async {
                 self.paired = true
             }
-            // We are paired, stop accepting invitations
             serviceAdvertiser.stopAdvertisingPeer()
             break
         default:
-            // Peer connecting or something else
             DispatchQueue.main.async {
                 self.paired = false
             }
@@ -160,23 +130,12 @@ extension MPCImpl: MCSessionDelegate {
         if let dataString = String(data: data, encoding: .utf8) {
             log.info("didReceive state \(dataString)")
             
-            // We received a state
             DispatchQueue.main.async {
                 self.receivedState = dataString
             }
         } else {
             log.info("didReceive invalid value \(data.count) bytes")
         }
-        
-        /*if let string = String(data: data, encoding: .utf8), let move = Move(rawValue: string) {
-            log.info("didReceive move \(string)")
-            // We received a move from the opponent, tell the GameView
-            DispatchQueue.main.async {
-                self.receivedMove = move
-            }
-        } else {
-            log.info("didReceive invalid value \(data.count) bytes")
-        }*/
     }
     
     public func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {
