@@ -1,13 +1,13 @@
 //
-//  MultipeerConnectorUITestsLaunchTests.swift
-//  MultipeerConnectorUITests
+//  MultipeerChatUITestsLaunchTests.swift
+//  MultipeerChatUITests
 //
 //  Created by dave on 04/07/24.
 //
 
 import XCTest
 
-final class MultipeerConnectorUITestsLaunchTests: XCTestCase {
+final class MultipeerChatUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

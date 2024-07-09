@@ -1,6 +1,6 @@
 //
-//  MultipeerConnectorTests.swift
-//  MultipeerConnectorTests
+//  MultipeerChatTests.swift
+//  MultipeerChatTests
 //
 //  Created by dave on 04/07/24.
 //

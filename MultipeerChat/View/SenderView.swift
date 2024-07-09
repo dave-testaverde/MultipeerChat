@@ -1,5 +1,5 @@
 //
-//  GameView.swift
+//  SenderView.swift
 //  MultipeerChat
 //
 //  Created by dave on 05/07/24.
@@ -9,13 +9,14 @@ import SwiftUI
 
 struct SenderView: View {
     
-    @Environment(MPCInterface.self) var mpcInterface
-    @Binding var currentView: Int
+    @Environment(ViewModel.self) var viewModel
+    @Environment(Router.self) var router
+    
     @State var message: String = ""
     
     var body: some View {
-        @Bindable var mpcInterface = mpcInterface
-        @Bindable var mpcSession = mpcInterface.mpcSession!
+        @Bindable var mpcInterface = viewModel.mpcInterface
+        @Bindable var mpcSession = viewModel.mpcInterface.mpcSession!
         if(mpcSession.session.connectedPeers.count == 0){
             StartView()
         } else {
@@ -29,12 +30,9 @@ struct SenderView: View {
                     }
                     HStack {
                         Button("Send →") {
-                            mpcInterface.sendMessage(
-                                state: MessageState(
-                                    idMPC: mpcSession.session.myPeerID,
-                                    payload: message
-                                )
-                            )
+                            viewModel.currentState.idMPC = viewModel.mpcInterface.mpcSession!.username
+                            viewModel.currentState.payload = message
+                            mpcInterface.sendState()
                         }.buttonStyle(BorderlessButtonStyle())
                             .padding(.horizontal, 30)
                             .padding(.vertical, 10)
@@ -62,7 +60,7 @@ struct SenderView: View {
                         Spacer()
                     }
                     HStack {
-                        Text(mpcInterface.recvMessage().getPayload())
+                        Text(viewModel.recvLastState.payload)
                             .padding([.horizontal], 75.0)
                             .padding(.bottom, 24)
                             .foregroundColor(Color.blue)
@@ -71,8 +69,7 @@ struct SenderView: View {
                     HStack {
                         Button("Disconnect") {
                             mpcInterface.disconnect()
-                            currentView = 0
-                            //onDisconnect = true
+                            router.navigationPath.removeLast()
                         }.buttonStyle(BorderlessButtonStyle())
                             .padding(.horizontal, 30)
                             .padding(.vertical, 10)
@@ -88,6 +85,6 @@ struct SenderView: View {
 
 struct SenderView_Previews: PreviewProvider {
     static var previews: some View {
-        SenderView(currentView: .constant(0))
+        SenderView()
     }
 }

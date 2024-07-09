@@ -1,5 +1,5 @@
 //
-//  ListPlayer.swift
+//  ListFriend.swift
 //  MultipeerChat
 //
 //  Created by dave on 05/07/24.

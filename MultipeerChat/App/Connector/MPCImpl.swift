@@ -10,25 +10,28 @@ import os
 
 @Observable class MPCImpl: NSObject {
     
+    var viewModel: ViewModel
+    
     private let serviceType = "mpc-service"
     
     public let serviceAdvertiser: MCNearbyServiceAdvertiser
     public let serviceBrowser: MCNearbyServiceBrowser
     public let session: MCSession
+
     
     private let log = Logger()
     
     var myPeerID: MCPeerID
     var availablePeers: [MCPeerID] = []
-    var receivedState: String = ""
     var recvdInvite: Bool = false
     var recvdInviteFrom: MCPeerID? = nil
     var paired: Bool = false
     var username: String = ""
     var invitationHandler: ((Bool, MCSession?) -> Void)?
     
-    init(username: String) {
+    init(username: String, viewModel: ViewModel) {
         let peerID = MCPeerID(displayName: username)
+        self.viewModel = viewModel
         self.username = username
         self.myPeerID = peerID
         
@@ -50,11 +53,15 @@ import os
         serviceBrowser.stopBrowsingForPeers()
     }
     
-    func send(state: String) {
+    func send() {
         if !session.connectedPeers.isEmpty {
-            log.info("sendState: \(String(describing: state)) to \(self.session.connectedPeers[0].displayName)")
+            log.info("sendState: \(String(describing: self.viewModel.currentState)) to \(self.session.connectedPeers[0].displayName)")
             do {
-                try session.send(state.data(using: .utf8)!, toPeers: session.connectedPeers, with: .reliable)
+                try session.send(
+                    MessageState.encodeJSON(state: self.viewModel.currentState).data(using: .utf8)!,
+                    toPeers: session.connectedPeers,
+                    with: .reliable
+                )
             } catch {
                 log.error("Error sending: \(String(describing: error))")
             }
@@ -131,7 +138,8 @@ extension MPCImpl: MCSessionDelegate {
             log.info("didReceive state \(dataString)")
             
             DispatchQueue.main.async {
-                self.receivedState = dataString
+                self.viewModel.currentState = MessageState.decodeJSON(json: dataString)
+                self.viewModel.recvLastState = self.viewModel.currentState
             }
         } else {
             log.info("didReceive invalid value \(data.count) bytes")

@@ -10,20 +10,20 @@ import MultipeerConnectivity
 import SwiftUI
 
 protocol Connectivity {
-    func initImpl(username: String) -> Void
+    func initImpl(username: String, viewModel: ViewModel) -> Void
     func isPaired() -> Bool
     func getUsername() -> String
-    func sendMessage(state: MessageState) -> Void
-    func recvMessage() -> MessageState
+    func sendState() -> Void
     func disconnect() -> Void
 }
 
-@Observable class MPCInterface : Connectivity {
+@Observable 
+class MPCInterface: Connectivity {
     
    var mpcSession: MPCImpl?
     
-   func initImpl(username: String) -> Void {
-        mpcSession = MPCImpl(username: username)
+    func initImpl(username: String, viewModel: ViewModel) -> Void {
+       mpcSession = MPCImpl(username: username, viewModel: viewModel)
     }
     
     func Catchable(f: () throws -> ()) -> Bool {
@@ -44,15 +44,8 @@ protocol Connectivity {
         return mpcSession!.username
     }
     
-    func sendMessage(state: MessageState) -> Void {
-        mpcSession!.send(state: state.getPayload())
-    }
-    
-    func recvMessage() -> MessageState {
-        return MessageState(
-            idMPC: mpcSession!.session.connectedPeers[0],
-            payload: mpcSession!.receivedState
-        )
+    func sendState() -> Void {
+        mpcSession!.send()
     }
     
     func disconnect() -> Void {

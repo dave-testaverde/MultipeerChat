@@ -7,34 +7,48 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		553CEE352C368D2200EDEBFC /* MultipeerConnectorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553CEE342C368D2200EDEBFC /* MultipeerConnectorApp.swift */; };
+		553CEE352C368D2200EDEBFC /* MultipeerChatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553CEE342C368D2200EDEBFC /* MultipeerChatApp.swift */; };
 		553CEE392C368D2300EDEBFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 553CEE382C368D2300EDEBFC /* Assets.xcassets */; };
 		553CEE3C2C368D2300EDEBFC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 553CEE3B2C368D2300EDEBFC /* Preview Assets.xcassets */; };
-		553CEE602C368D6B00EDEBFC /* MPCImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553CEE5F2C368D6B00EDEBFC /* MPCImpl.swift */; };
 		553CEE892C37D3A300EDEBFC /* SenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553CEE862C37D3A300EDEBFC /* SenderView.swift */; };
 		553CEE8A2C37D3A300EDEBFC /* PairView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553CEE872C37D3A300EDEBFC /* PairView.swift */; };
 		553CEE8B2C37D3A300EDEBFC /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553CEE882C37D3A300EDEBFC /* StartView.swift */; };
-		553CEE8D2C37EDBF00EDEBFC /* MPCInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553CEE8C2C37EDBF00EDEBFC /* MPCInterface.swift */; };
 		553CEE902C3855A500EDEBFC /* ListFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553CEE8F2C3855A500EDEBFC /* ListFriend.swift */; };
 		553CEE932C38583A00EDEBFC /* MessageState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553CEE922C38583A00EDEBFC /* MessageState.swift */; };
+		553CEEC72C3DF31700EDEBFC /* MPCImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553CEEBC2C3DF31700EDEBFC /* MPCImpl.swift */; };
+		553CEEC82C3DF31700EDEBFC /* MPCInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553CEEBD2C3DF31700EDEBFC /* MPCInterface.swift */; };
+		553CEEC92C3DF31700EDEBFC /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553CEEBF2C3DF31700EDEBFC /* Route.swift */; };
+		553CEECA2C3DF31700EDEBFC /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553CEEC02C3DF31700EDEBFC /* Router.swift */; };
+		553CEECB2C3DF31700EDEBFC /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553CEEC22C3DF31700EDEBFC /* Color.swift */; };
+		553CEECC2C3DF31700EDEBFC /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553CEEC42C3DF31700EDEBFC /* ViewModel.swift */; };
+		553CEECE2C3DF33200EDEBFC /* EntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553CEECD2C3DF33200EDEBFC /* EntryView.swift */; };
+		553CEED02C3DF34400EDEBFC /* Clouds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553CEECF2C3DF34400EDEBFC /* Clouds.swift */; };
+		553CEED22C3DF38300EDEBFC /* RouterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553CEED12C3DF38300EDEBFC /* RouterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		553CEE312C368D2200EDEBFC /* MultipeerChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MultipeerChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		553CEE342C368D2200EDEBFC /* MultipeerConnectorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipeerConnectorApp.swift; sourceTree = "<group>"; };
+		553CEE342C368D2200EDEBFC /* MultipeerChatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipeerChatApp.swift; sourceTree = "<group>"; };
 		553CEE382C368D2300EDEBFC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		553CEE3B2C368D2300EDEBFC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		553CEE452C368D2400EDEBFC /* MultipeerConnectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipeerConnectorTests.swift; sourceTree = "<group>"; };
-		553CEE4F2C368D2400EDEBFC /* MultipeerConnectorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipeerConnectorUITests.swift; sourceTree = "<group>"; };
-		553CEE512C368D2400EDEBFC /* MultipeerConnectorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipeerConnectorUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		553CEE5F2C368D6B00EDEBFC /* MPCImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCImpl.swift; sourceTree = "<group>"; };
+		553CEE452C368D2400EDEBFC /* MultipeerChatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipeerChatTests.swift; sourceTree = "<group>"; };
+		553CEE4F2C368D2400EDEBFC /* MultipeerChatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipeerChatUITests.swift; sourceTree = "<group>"; };
+		553CEE512C368D2400EDEBFC /* MultipeerChatUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipeerChatUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		553CEE7C2C36AF2F00EDEBFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		553CEE862C37D3A300EDEBFC /* SenderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SenderView.swift; sourceTree = "<group>"; };
 		553CEE872C37D3A300EDEBFC /* PairView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PairView.swift; sourceTree = "<group>"; };
 		553CEE882C37D3A300EDEBFC /* StartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
-		553CEE8C2C37EDBF00EDEBFC /* MPCInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCInterface.swift; sourceTree = "<group>"; };
 		553CEE8F2C3855A500EDEBFC /* ListFriend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFriend.swift; sourceTree = "<group>"; };
 		553CEE922C38583A00EDEBFC /* MessageState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageState.swift; sourceTree = "<group>"; };
+		553CEEBC2C3DF31700EDEBFC /* MPCImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPCImpl.swift; sourceTree = "<group>"; };
+		553CEEBD2C3DF31700EDEBFC /* MPCInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPCInterface.swift; sourceTree = "<group>"; };
+		553CEEBF2C3DF31700EDEBFC /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		553CEEC02C3DF31700EDEBFC /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		553CEEC22C3DF31700EDEBFC /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		553CEEC42C3DF31700EDEBFC /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		553CEECD2C3DF33200EDEBFC /* EntryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EntryView.swift; path = MultipeerChat/View/EntryView.swift; sourceTree = SOURCE_ROOT; };
+		553CEECF2C3DF34400EDEBFC /* Clouds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Clouds.swift; sourceTree = "<group>"; };
+		553CEED12C3DF38300EDEBFC /* RouterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,8 +66,8 @@
 			isa = PBXGroup;
 			children = (
 				553CEE332C368D2200EDEBFC /* MultipeerChat */,
-				553CEE442C368D2400EDEBFC /* MultipeerConnectorTests */,
-				553CEE4E2C368D2400EDEBFC /* MultipeerConnectorUITests */,
+				553CEE442C368D2400EDEBFC /* MultipeerChatTests */,
+				553CEE4E2C368D2400EDEBFC /* MultipeerChatUITests */,
 				553CEE322C368D2200EDEBFC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -69,10 +83,10 @@
 		553CEE332C368D2200EDEBFC /* MultipeerChat */ = {
 			isa = PBXGroup;
 			children = (
+				553CEEC62C3DF31700EDEBFC /* App */,
 				553CEE912C38582000EDEBFC /* Model */,
 				553CEE852C37D39100EDEBFC /* View */,
-				553CEE5E2C368D4300EDEBFC /* Connector */,
-				553CEE342C368D2200EDEBFC /* MultipeerConnectorApp.swift */,
+				553CEE342C368D2200EDEBFC /* MultipeerChatApp.swift */,
 				553CEE382C368D2300EDEBFC /* Assets.xcassets */,
 				553CEE7C2C36AF2F00EDEBFC /* Info.plist */,
 				553CEE3A2C368D2300EDEBFC /* Preview Content */,
@@ -88,30 +102,21 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		553CEE442C368D2400EDEBFC /* MultipeerConnectorTests */ = {
+		553CEE442C368D2400EDEBFC /* MultipeerChatTests */ = {
 			isa = PBXGroup;
 			children = (
-				553CEE452C368D2400EDEBFC /* MultipeerConnectorTests.swift */,
+				553CEE452C368D2400EDEBFC /* MultipeerChatTests.swift */,
 			);
-			path = MultipeerConnectorTests;
+			path = MultipeerChatTests;
 			sourceTree = "<group>";
 		};
-		553CEE4E2C368D2400EDEBFC /* MultipeerConnectorUITests */ = {
+		553CEE4E2C368D2400EDEBFC /* MultipeerChatUITests */ = {
 			isa = PBXGroup;
 			children = (
-				553CEE4F2C368D2400EDEBFC /* MultipeerConnectorUITests.swift */,
-				553CEE512C368D2400EDEBFC /* MultipeerConnectorUITestsLaunchTests.swift */,
+				553CEE4F2C368D2400EDEBFC /* MultipeerChatUITests.swift */,
+				553CEE512C368D2400EDEBFC /* MultipeerChatUITestsLaunchTests.swift */,
 			);
-			path = MultipeerConnectorUITests;
-			sourceTree = "<group>";
-		};
-		553CEE5E2C368D4300EDEBFC /* Connector */ = {
-			isa = PBXGroup;
-			children = (
-				553CEE5F2C368D6B00EDEBFC /* MPCImpl.swift */,
-				553CEE8C2C37EDBF00EDEBFC /* MPCInterface.swift */,
-			);
-			path = Connector;
+			path = MultipeerChatUITests;
 			sourceTree = "<group>";
 		};
 		553CEE852C37D39100EDEBFC /* View */ = {
@@ -121,6 +126,8 @@
 				553CEE882C37D3A300EDEBFC /* StartView.swift */,
 				553CEE872C37D3A300EDEBFC /* PairView.swift */,
 				553CEE862C37D3A300EDEBFC /* SenderView.swift */,
+				553CEECD2C3DF33200EDEBFC /* EntryView.swift */,
+				553CEED12C3DF38300EDEBFC /* RouterView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -128,6 +135,7 @@
 		553CEE8E2C38558900EDEBFC /* Partial */ = {
 			isa = PBXGroup;
 			children = (
+				553CEECF2C3DF34400EDEBFC /* Clouds.swift */,
 				553CEE8F2C3855A500EDEBFC /* ListFriend.swift */,
 			);
 			path = Partial;
@@ -139,6 +147,51 @@
 				553CEE922C38583A00EDEBFC /* MessageState.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		553CEEBE2C3DF31700EDEBFC /* Connector */ = {
+			isa = PBXGroup;
+			children = (
+				553CEEBC2C3DF31700EDEBFC /* MPCImpl.swift */,
+				553CEEBD2C3DF31700EDEBFC /* MPCInterface.swift */,
+			);
+			path = Connector;
+			sourceTree = "<group>";
+		};
+		553CEEC12C3DF31700EDEBFC /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				553CEEBF2C3DF31700EDEBFC /* Route.swift */,
+				553CEEC02C3DF31700EDEBFC /* Router.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		553CEEC32C3DF31700EDEBFC /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				553CEEC22C3DF31700EDEBFC /* Color.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		553CEEC52C3DF31700EDEBFC /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				553CEEC42C3DF31700EDEBFC /* ViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		553CEEC62C3DF31700EDEBFC /* App */ = {
+			isa = PBXGroup;
+			children = (
+				553CEEBE2C3DF31700EDEBFC /* Connector */,
+				553CEEC12C3DF31700EDEBFC /* Router */,
+				553CEEC32C3DF31700EDEBFC /* UI */,
+				553CEEC52C3DF31700EDEBFC /* ViewModel */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,13 +264,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				553CEEC92C3DF31700EDEBFC /* Route.swift in Sources */,
+				553CEECE2C3DF33200EDEBFC /* EntryView.swift in Sources */,
 				553CEE8B2C37D3A300EDEBFC /* StartView.swift in Sources */,
+				553CEECB2C3DF31700EDEBFC /* Color.swift in Sources */,
+				553CEECA2C3DF31700EDEBFC /* Router.swift in Sources */,
 				553CEE8A2C37D3A300EDEBFC /* PairView.swift in Sources */,
-				553CEE8D2C37EDBF00EDEBFC /* MPCInterface.swift in Sources */,
-				553CEE602C368D6B00EDEBFC /* MPCImpl.swift in Sources */,
+				553CEEC72C3DF31700EDEBFC /* MPCImpl.swift in Sources */,
 				553CEE902C3855A500EDEBFC /* ListFriend.swift in Sources */,
 				553CEE932C38583A00EDEBFC /* MessageState.swift in Sources */,
-				553CEE352C368D2200EDEBFC /* MultipeerConnectorApp.swift in Sources */,
+				553CEED22C3DF38300EDEBFC /* RouterView.swift in Sources */,
+				553CEE352C368D2200EDEBFC /* MultipeerChatApp.swift in Sources */,
+				553CEEC82C3DF31700EDEBFC /* MPCInterface.swift in Sources */,
+				553CEED02C3DF34400EDEBFC /* Clouds.swift in Sources */,
+				553CEECC2C3DF31700EDEBFC /* ViewModel.swift in Sources */,
 				553CEE892C37D3A300EDEBFC /* SenderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
