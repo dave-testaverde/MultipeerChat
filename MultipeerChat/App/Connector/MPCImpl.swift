@@ -139,6 +139,10 @@ extension MPCImpl: MCSessionDelegate {
             
             DispatchQueue.main.async {
                 self.viewModel.currentState = MessageState.decodeJSON(json: dataString)
+                
+                self.viewModel.currentState.isHost = false
+                self.viewModel.syncListMessages()
+                
                 self.viewModel.recvLastState = self.viewModel.currentState
             }
         } else {

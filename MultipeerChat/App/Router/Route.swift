@@ -11,4 +11,5 @@ enum Route: Hashable {
     case entryView
     case startView
     case pairView
+    case chatView
 }

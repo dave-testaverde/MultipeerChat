@@ -12,13 +12,22 @@ import MultipeerConnectivity
 class ViewModel {
     var currentState: MessageState
     var recvLastState: MessageState
+    var listMessages: [MessageState]
     var mpcInterface: MPCInterface
     
-    let zeroState = MessageState(idMPC: "", payload: "")
+    var namePeerConnected: String
+    
+    let zeroState = MessageState(idMPC: "", payload: "", isHost: true)
     
     init(mpcInterface: MPCInterface) {
         self.currentState = zeroState
         self.recvLastState = zeroState
         self.mpcInterface = mpcInterface
+        self.listMessages = []
+        self.namePeerConnected = ""
+    }
+    
+    func syncListMessages(){
+        self.listMessages.append(self.currentState)
     }
 }

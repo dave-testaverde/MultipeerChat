@@ -8,13 +8,15 @@
 import Foundation
 import MultipeerConnectivity
 
-class MessageState: Codable {
+class MessageState: Codable, Identifiable {
+    var isHost: Bool
     var idMPC: String
     var payload: String
     
-    init(idMPC: String, payload: String) {
+    init(idMPC: String, payload: String, isHost: Bool) {
         self.idMPC = idMPC
         self.payload = payload
+        self.isHost = isHost
     }
     
     static func encodeJSON(state: MessageState) -> String {

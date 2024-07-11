@@ -29,6 +29,8 @@ struct PairView: View {
                             Button("Accept") {
                                 if (mpcInterface.mpcSession!.invitationHandler != nil) {
                                     mpcInterface.mpcSession!.invitationHandler!(true, mpcInterface.mpcSession!.session)
+                                    
+                                    viewModel.namePeerConnected = mpcInterface.mpcSession!.recvdInviteFrom!.displayName
                                 }
                             }
                             Button("Reject") {
@@ -37,8 +39,10 @@ struct PairView: View {
                                 }
                             }
                         }
-                    
                 }
+                .onAppear(perform: {
+                    viewModel.listMessages = []
+                })
             } else {
                 SenderView()
                     .environment(router)

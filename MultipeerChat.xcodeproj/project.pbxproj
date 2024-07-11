@@ -24,6 +24,7 @@
 		553CEECE2C3DF33200EDEBFC /* EntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553CEECD2C3DF33200EDEBFC /* EntryView.swift */; };
 		553CEED02C3DF34400EDEBFC /* Clouds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553CEECF2C3DF34400EDEBFC /* Clouds.swift */; };
 		553CEED22C3DF38300EDEBFC /* RouterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553CEED12C3DF38300EDEBFC /* RouterView.swift */; };
+		55DEEB5C2C406637004B1F3F /* ListMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DEEB5B2C406637004B1F3F /* ListMessages.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		553CEECD2C3DF33200EDEBFC /* EntryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EntryView.swift; path = MultipeerChat/View/EntryView.swift; sourceTree = SOURCE_ROOT; };
 		553CEECF2C3DF34400EDEBFC /* Clouds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Clouds.swift; sourceTree = "<group>"; };
 		553CEED12C3DF38300EDEBFC /* RouterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterView.swift; sourceTree = "<group>"; };
+		55DEEB5B2C406637004B1F3F /* ListMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListMessages.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 			children = (
 				553CEECF2C3DF34400EDEBFC /* Clouds.swift */,
 				553CEE8F2C3855A500EDEBFC /* ListFriend.swift */,
+				55DEEB5B2C406637004B1F3F /* ListMessages.swift */,
 			);
 			path = Partial;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				553CEEC92C3DF31700EDEBFC /* Route.swift in Sources */,
+				55DEEB5C2C406637004B1F3F /* ListMessages.swift in Sources */,
 				553CEECE2C3DF33200EDEBFC /* EntryView.swift in Sources */,
 				553CEE8B2C37D3A300EDEBFC /* StartView.swift in Sources */,
 				553CEECB2C3DF31700EDEBFC /* Color.swift in Sources */,

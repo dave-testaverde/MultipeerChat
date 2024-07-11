@@ -10,8 +10,10 @@ import SwiftUI
 struct ListFriend: View {
     
     @Environment(MPCInterface.self) var mpcInterface
+    @Environment(ViewModel.self) var viewModel
     
     var body: some View {
+        @Bindable var viewModel = viewModel
         @Bindable var mpcInterface = mpcInterface
         @Bindable var mpcSession = mpcInterface.mpcSession!
         HStack {
@@ -48,6 +50,7 @@ struct ListFriend: View {
                 List(mpcInterface.mpcSession!.availablePeers, id: \.self) { peer in
                     Button(peer.displayName) {
                         mpcInterface.mpcSession!.serviceBrowser.invitePeer(peer, to: mpcInterface.mpcSession!.session, withContext: nil, timeout: 30)
+                        viewModel.namePeerConnected = peer.displayName
                     }
                 } .navigationTitle("Friends")
             } detail: {

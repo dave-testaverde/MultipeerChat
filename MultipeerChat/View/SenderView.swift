@@ -19,9 +19,29 @@ struct SenderView: View {
         @Bindable var mpcSession = viewModel.mpcInterface.mpcSession!
         if(mpcSession.session.connectedPeers.count == 0){
             StartView()
+                .environment(router)
+                .environment(viewModel)
         } else {
             ZStack {
                 VStack(alignment: .center) {
+                    HStack {
+                        Button("Chat") {
+                            print(mpcInterface.mpcSession!.availablePeers)
+                            router.navigateTo(route: .chatView)
+                        }.buttonStyle(BorderlessButtonStyle())
+                            .padding(.horizontal, 30)
+                            .padding(.vertical, 10)
+                            .foregroundColor(.white)
+                            .background(Color.blue)
+                            .cornerRadius(12)
+                            .disabled(viewModel.listMessages.isEmpty ? true : false)
+                    }
+                    HStack{
+                        Divider().frame(width: 200, height: 1).background(Color.blue)
+                    }
+                    HStack {
+                        Spacer()
+                    }
                     HStack {
                         TextField("Command", text: $message)
                             .padding([.horizontal], 75.0)
@@ -30,9 +50,19 @@ struct SenderView: View {
                     }
                     HStack {
                         Button("Send →") {
-                            viewModel.currentState.idMPC = viewModel.mpcInterface.mpcSession!.username
-                            viewModel.currentState.payload = message
+                            //viewModel.currentState.idMPC = viewModel.mpcInterface.mpcSession!.username
+                            //viewModel.currentState.payload = message
+                            
+                            viewModel.currentState = MessageState(
+                                idMPC: viewModel.mpcInterface.mpcSession!.username,
+                                payload: message,
+                                isHost: true
+                            )
+                            
                             mpcInterface.sendState()
+                            
+                            viewModel.syncListMessages()
+                            message = ""
                         }.buttonStyle(BorderlessButtonStyle())
                             .padding(.horizontal, 30)
                             .padding(.vertical, 10)
