@@ -13,72 +13,40 @@ struct ListMessages: View {
     @Environment(ViewModel.self) var viewModel
     @Environment(MPCInterface.self) var mpcInterface
     
+    @State var messageToSend: String = ""
+    
     var body: some View {
         @Bindable var viewModel = viewModel
         @Bindable var mpcInterface = viewModel.mpcInterface
         @Bindable var mpcSession = mpcInterface.mpcSession!
+        
         HStack {
             Spacer()
-        }
-        HStack {
-            HStack {
-                HStack {
-                    HStack {
-                        Text(viewModel.namePeerConnected)
-                            .font(.system(size: 18))
-                            .foregroundStyle(.white)
-                    }
-                    .padding(.all, 7)
-                }
-                .frame(width: 150, height: 30)
-                .foregroundColor(.white)
-                .background(.green)
-                .cornerRadius(20)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 20)
-                        .stroke(Color.green, lineWidth: 1.5)
-                    
-                ).onTapGesture {
-                   
-                }
-            }
         }
         HStack {
             Spacer()
         }
         HStack {
             NavigationSplitView {
-                List(viewModel.listMessages.reversed()) { message in //peer in
-                    
-                    /*VStack(alignment: .center){
-                        Button(message.payload) {}
-                        .frame(width: 150, height: 30)
-                        .foregroundColor(.white)
-                        .background( (message.isHost) ? .green : .blue)
-                        .cornerRadius(20)
-                    }.listRowBackground(Color.white)
-                        .frame(width: 150, height: 30)*/
-                        
+                List(viewModel.listMessages) { message in
                     HStack{
-                        HStack{
-                            Text("")
-                            Spacer()
+                        GeometryReader { geometry in
+                            HStack {
+                                HStack {
+                                    Button(message.payload) {}
+                                        .frame(width: 170, height: 25)
+                                        .padding(.all, 5)
+                                        .foregroundColor(.white)
+                                        .background( (message.isHost) ? .green : .blue)
+                                        .cornerRadius(20)
+                                }
+                                .frame(width: 170, alignment: (message.isHost) ? .trailing : .leading)
+                            }
+                            .listRowBackground(Color.white)
+                            .frame(width: geometry.size.width, alignment: (message.isHost) ? .trailing : .leading)
                         }
-                        HStack{
-                            Spacer()
-                            Button(message.payload) {}
-                            .frame(width: 200, height: 30)
-                            .foregroundColor(.white)
-                            .background( (message.isHost) ? .green : .blue)
-                            .cornerRadius(20)
-                            Spacer()
-                        }
-                        HStack{
-                            Spacer()
-                            Text("")
-                        }
-                    }.listRowBackground(Color.white)
-                    
+                    }
+                    .listRowSeparator(.hidden)
                     HStack{
                         HStack{
                             Text((message.isHost) ? "" : "Him/Her")
@@ -91,13 +59,48 @@ struct ListMessages: View {
                             Spacer()
                             Text((message.isHost) ? "You" : "")
                         }
-                    }.listRowBackground(Color.white)
+                    }
+                    .listRowBackground(Color.white).listRowSeparator(.hidden)
                 }
-                .navigationTitle("Chat")
+                .navigationTitle(viewModel.namePeerConnected)
                 .scrollContentBackground(.hidden)
                 .background(Color.white)
             } detail: {
-                Text("Select a Friend")
+                Text("Select a Chat")
+            }
+        }
+        HStack {
+            ZStack{
+                HStack{
+                    HStack{
+                        TextField("Message", text: $messageToSend)
+                            .padding(.bottom, 15)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .cornerRadius(12)
+                    }
+                    HStack{
+                        Button("Send →") {
+                            viewModel.currentState = MessageState(
+                                idMPC: viewModel.mpcInterface.mpcSession!.username,
+                                payload: messageToSend,
+                                isHost: true
+                            )
+                            
+                            mpcInterface.sendState()
+                            
+                            viewModel.syncListMessages()
+                            messageToSend = ""
+                        }.buttonStyle(BorderlessButtonStyle())
+                            .padding(.horizontal, 20)
+                            .padding(.vertical, 7)
+                            .foregroundColor(.white)
+                            .background(Color.accentColor)
+                            .cornerRadius(12)
+                            .disabled(messageToSend.isEmpty ? true : false)
+                    }
+                    .padding(.bottom, 15)
+                }
+                .frame(width: 350)
             }
         }
     }

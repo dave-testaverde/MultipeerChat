@@ -8,7 +8,9 @@
 import Foundation
 import MultipeerConnectivity
 
-class MessageState: Codable, Identifiable {
+struct MessageState: Codable, Identifiable, Hashable {
+    var id: String = UUID().uuidString
+    
     var isHost: Bool
     var idMPC: String
     var payload: String
