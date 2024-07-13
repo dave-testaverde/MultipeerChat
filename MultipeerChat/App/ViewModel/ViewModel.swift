@@ -19,6 +19,9 @@ class ViewModel {
     
     let zeroState = MessageState(idMPC: "", payload: "", isHost: true)
     
+    var searchMessage: String = ""
+    var filteredMessages: [MessageState] = []
+    
     init(mpcInterface: MPCInterface) {
         self.currentState = zeroState
         self.recvLastState = zeroState

@@ -38,6 +38,9 @@ struct RouterView: View {
                         ListMessages()
                             .environment(router)
                             .environment(viewModel)
+                            .onAppear(perform: {
+                                
+                            })
                     }
                 }
         }

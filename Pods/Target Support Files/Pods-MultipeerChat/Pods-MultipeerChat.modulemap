@@ -1,0 +1,6 @@
+framework module Pods_MultipeerChat {
+  umbrella header "Pods-MultipeerChat-umbrella.h"
+
+  export *
+  module * { export * }
+}

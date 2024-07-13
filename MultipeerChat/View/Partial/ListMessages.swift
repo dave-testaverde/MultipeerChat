@@ -12,7 +12,7 @@ struct ListMessages: View {
     
     @Environment(ViewModel.self) var viewModel
     @Environment(MPCInterface.self) var mpcInterface
-    
+        
     @State var messageToSend: String = ""
     
     var body: some View {
@@ -21,14 +21,25 @@ struct ListMessages: View {
         @Bindable var mpcSession = mpcInterface.mpcSession!
         
         HStack {
-            Spacer()
+            //Spacer()
+            ZStack{
+                HStack{
+                    HStack{
+                        TextField("Search", text: $viewModel.searchMessage)
+                            .padding(.bottom, 15)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .cornerRadius(12)
+                    }
+                }
+                .frame(width: 350)
+            }
         }
         HStack {
             Spacer()
         }
         HStack {
             NavigationSplitView {
-                List(viewModel.listMessages) { message in
+                List((viewModel.searchMessage.isEmpty) ? viewModel.listMessages : viewModel.filteredMessages) { message in
                     HStack{
                         GeometryReader { geometry in
                             HStack {
