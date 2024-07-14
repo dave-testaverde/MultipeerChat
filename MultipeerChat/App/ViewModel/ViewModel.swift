@@ -8,6 +8,9 @@
 import Foundation
 import MultipeerConnectivity
 
+import SwiftUI
+import RxSwift
+
 @Observable
 class ViewModel {
     var currentState: MessageState
@@ -19,7 +22,7 @@ class ViewModel {
     
     let zeroState = MessageState(idMPC: "", payload: "", isHost: true)
     
-    var searchMessage: String = ""
+    var searchMessage: String  = ""
     var filteredMessages: [MessageState] = []
     
     init(mpcInterface: MPCInterface) {
@@ -33,4 +36,9 @@ class ViewModel {
     func syncListMessages(){
         self.listMessages.append(self.currentState)
     }
+    
 }
+
+
+
+
