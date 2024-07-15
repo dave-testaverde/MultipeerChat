@@ -34,13 +34,10 @@ struct RouterView: View {
                             PairView()
                                 .environment(router)
                                 .environment(viewModel)
-                    case .chatView:
-                        ListMessages()
-                            .environment(router)
-                            .environment(viewModel)
-                            .onAppear(perform: {
-                                
-                            })
+                        case .chatView:
+                            ListMessages()
+                                .environment(router)
+                                .environment(viewModel)
                     }
                 }
         }

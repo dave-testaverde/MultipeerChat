@@ -29,6 +29,9 @@ struct ListMessages: View {
                             .padding(.bottom, 15)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .cornerRadius(12)
+                            .onChange(of: viewModel.searchMessage) { oldState, newState in
+                                viewModel.notifyEvent()
+                            }
                     }
                 }
                 .frame(width: 350)
