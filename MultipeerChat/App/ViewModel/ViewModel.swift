@@ -25,7 +25,7 @@ class ViewModel {
     var searchMessage: String = ""
     var filteredMessages: [MessageState] = []
     
-    let zeroState = MessageState(idMPC: "", payload: "", isHost: true)
+    let zeroState = MessageState(idMPC: "", payload: "", isHost: true, isShowable: false)
     
     /// _ Rx component & tools _
     
@@ -47,7 +47,7 @@ class ViewModel {
     }
     
     func notifyEvent() {
-        reducer.onNext(self.searchMessage) //.accept(self.searchMessage)
+        reducer.onNext(self.searchMessage)
     }
     
     func setupRx() {
@@ -57,9 +57,7 @@ class ViewModel {
             }
         })
         .debug()
-        .subscribe(onNext: { value in
-            print("NEXT list: \(value)")
-        })
+        .subscribe(onNext: { value in })
         .disposed(by: disposeBag)
     }
 }

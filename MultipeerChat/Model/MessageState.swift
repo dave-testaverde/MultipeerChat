@@ -14,11 +14,13 @@ struct MessageState: Codable, Identifiable, Hashable {
     var isHost: Bool
     var idMPC: String
     var payload: String
+    var isShowable: Bool
     
-    init(idMPC: String, payload: String, isHost: Bool) {
+    init(idMPC: String, payload: String, isHost: Bool, isShowable: Bool) {
         self.idMPC = idMPC
         self.payload = payload
         self.isHost = isHost
+        self.isShowable = isShowable
     }
     
     static func encodeJSON(state: MessageState) -> String {

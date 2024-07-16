@@ -97,7 +97,8 @@ struct ListMessages: View {
                             viewModel.currentState = MessageState(
                                 idMPC: viewModel.mpcInterface.mpcSession!.username,
                                 payload: messageToSend,
-                                isHost: true
+                                isHost: true,
+                                isShowable: false
                             )
                             
                             mpcInterface.sendState()

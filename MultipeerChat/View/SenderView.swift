@@ -53,7 +53,8 @@ struct SenderView: View {
                             viewModel.currentState = MessageState(
                                 idMPC: viewModel.mpcInterface.mpcSession!.username,
                                 payload: message,
-                                isHost: true
+                                isHost: true,
+                                isShowable: false
                             )
                             
                             mpcInterface.sendState()
