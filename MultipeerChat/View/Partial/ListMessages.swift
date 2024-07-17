@@ -21,7 +21,6 @@ struct ListMessages: View {
         @Bindable var mpcSession = mpcInterface.mpcSession!
         
         HStack {
-            //Spacer()
             ZStack{
                 HStack{
                     HStack{
@@ -46,10 +45,11 @@ struct ListMessages: View {
                     HStack{
                         GeometryReader { geometry in
                             HStack {
-                                HStack {
+                                HStack{
                                     Button(message.payload) {}
                                         .frame(width: 170, height: 25)
                                         .padding(.all, 5)
+                                        .font(.system(size: 16))
                                         .foregroundColor(.white)
                                         .background( (message.isHost) ? .green : .blue)
                                         .cornerRadius(20)
