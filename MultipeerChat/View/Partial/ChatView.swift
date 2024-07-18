@@ -1,5 +1,5 @@
 //
-//  ListMessages.swift
+//  ChatView.swift
 //  MultipeerChat
 //
 //  Created by dave on 11/07/24.
@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct ListMessages: View {
+struct ChatView: View {
     
     @Environment(ViewModel.self) var viewModel
     @Environment(MPCInterface.self) var mpcInterface
@@ -41,44 +41,23 @@ struct ListMessages: View {
         }
         HStack {
             NavigationSplitView {
-                List((viewModel.searchMessage.isEmpty) ? viewModel.listMessages : viewModel.filteredMessages) { message in
-                    HStack{
-                        GeometryReader { geometry in
-                            HStack {
-                                HStack{
-                                    Button(message.payload) {}
-                                        .frame(width: 170, height: 25)
-                                        .padding(.all, 5)
-                                        .font(.system(size: 16))
-                                        .foregroundColor(.white)
-                                        .background( (message.isHost) ? .green : .blue)
-                                        .cornerRadius(20)
-                                }
-                                .frame(width: 170, alignment: (message.isHost) ? .trailing : .leading)
-                            }
-                            .listRowBackground(Color.white)
-                            .frame(width: geometry.size.width, alignment: (message.isHost) ? .trailing : .leading)
-                        }
+                GeometryReader { geometry in
+                    List((viewModel.searchMessage.isEmpty) ? viewModel.listMessages : viewModel.filteredMessages) { message in
+                        LazyVStack(alignment: (message.isHost) ? .trailing : .leading){
+                            Button(message.payload) {}
+                                .frame(width: 170)
+                                .padding(.all, 8)
+                                .font(.system(size: 16))
+                                .foregroundColor(.white)
+                                .background( (message.isHost) ? .green : .blue)
+                                .cornerRadius(20)
+                            Text((message.isHost) ? "You" : "Him/Her")
+                        }.listRowSeparator(.hidden)
                     }
-                    .listRowSeparator(.hidden)
-                    HStack{
-                        HStack{
-                            Text((message.isHost) ? "" : "Him/Her")
-                            Spacer()
-                        }
-                        HStack{
-                            Spacer()
-                        }
-                        HStack{
-                            Spacer()
-                            Text((message.isHost) ? "You" : "")
-                        }
-                    }
-                    .listRowBackground(Color.white).listRowSeparator(.hidden)
+                    .navigationTitle(viewModel.namePeerConnected)
+                    .scrollContentBackground(.hidden)
+                    .background(Color.white)
                 }
-                .navigationTitle(viewModel.namePeerConnected)
-                .scrollContentBackground(.hidden)
-                .background(Color.white)
             } detail: {
                 Text("Select a Chat")
             }
@@ -122,5 +101,5 @@ struct ListMessages: View {
 }
 
 #Preview {
-    ListMessages()
+    ChatView()
 }

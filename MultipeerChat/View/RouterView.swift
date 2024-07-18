@@ -35,7 +35,7 @@ struct RouterView: View {
                                 .environment(router)
                                 .environment(viewModel)
                         case .chatView:
-                            ListMessages()
+                            ChatView()
                                 .environment(router)
                                 .environment(viewModel)
                     }

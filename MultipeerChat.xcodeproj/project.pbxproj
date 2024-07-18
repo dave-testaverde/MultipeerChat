@@ -25,7 +25,7 @@
 		553CEECE2C3DF33200EDEBFC /* EntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553CEECD2C3DF33200EDEBFC /* EntryView.swift */; };
 		553CEED02C3DF34400EDEBFC /* Clouds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553CEECF2C3DF34400EDEBFC /* Clouds.swift */; };
 		553CEED22C3DF38300EDEBFC /* RouterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553CEED12C3DF38300EDEBFC /* RouterView.swift */; };
-		55DEEB5C2C406637004B1F3F /* ListMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DEEB5B2C406637004B1F3F /* ListMessages.swift */; };
+		55DEEB5C2C406637004B1F3F /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DEEB5B2C406637004B1F3F /* ChatView.swift */; };
 		55DEEB5E2C42E6C3004B1F3F /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 55DEEB5D2C42E6C3004B1F3F /* Podfile */; };
 /* End PBXBuildFile section */
 
@@ -405,7 +405,7 @@
 		554FEEF52C42EE5A00781867 /* RxSwift.release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = RxSwift.release.xcconfig; sourceTree = "<group>"; };
 		554FEEF82C42EE5A00781867 /* Manifest.lock */ = {isa = PBXFileReference; lastKnownFileType = text; path = Manifest.lock; sourceTree = "<group>"; };
 		554FEEF92C42EE5A00781867 /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Pods.xcodeproj; sourceTree = "<group>"; };
-		55DEEB5B2C406637004B1F3F /* ListMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListMessages.swift; sourceTree = "<group>"; };
+		55DEEB5B2C406637004B1F3F /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		55DEEB5D2C42E6C3004B1F3F /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
 		E1546452CD05737D5C9F8F62 /* Pods-MultipeerChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MultipeerChat.debug.xcconfig"; path = "Target Support Files/Pods-MultipeerChat/Pods-MultipeerChat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -500,7 +500,7 @@
 			children = (
 				553CEECF2C3DF34400EDEBFC /* Clouds.swift */,
 				553CEE8F2C3855A500EDEBFC /* ListFriend.swift */,
-				55DEEB5B2C406637004B1F3F /* ListMessages.swift */,
+				55DEEB5B2C406637004B1F3F /* ChatView.swift */,
 			);
 			path = Partial;
 			sourceTree = "<group>";
@@ -1415,7 +1415,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				553CEEC92C3DF31700EDEBFC /* Route.swift in Sources */,
-				55DEEB5C2C406637004B1F3F /* ListMessages.swift in Sources */,
+				55DEEB5C2C406637004B1F3F /* ChatView.swift in Sources */,
 				553CEECE2C3DF33200EDEBFC /* EntryView.swift in Sources */,
 				553CEE8B2C37D3A300EDEBFC /* StartView.swift in Sources */,
 				553CEECB2C3DF31700EDEBFC /* Color.swift in Sources */,
