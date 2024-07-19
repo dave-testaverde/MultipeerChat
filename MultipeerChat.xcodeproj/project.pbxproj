@@ -487,6 +487,7 @@
 			children = (
 				553CEE8E2C38558900EDEBFC /* Partial */,
 				553CEE882C37D3A300EDEBFC /* StartView.swift */,
+				55DEEB5B2C406637004B1F3F /* ChatView.swift */,
 				553CEE872C37D3A300EDEBFC /* PairView.swift */,
 				553CEE862C37D3A300EDEBFC /* SenderView.swift */,
 				553CEECD2C3DF33200EDEBFC /* EntryView.swift */,
@@ -500,7 +501,6 @@
 			children = (
 				553CEECF2C3DF34400EDEBFC /* Clouds.swift */,
 				553CEE8F2C3855A500EDEBFC /* ListFriend.swift */,
-				55DEEB5B2C406637004B1F3F /* ChatView.swift */,
 			);
 			path = Partial;
 			sourceTree = "<group>";
@@ -1575,7 +1575,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1613,7 +1613,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

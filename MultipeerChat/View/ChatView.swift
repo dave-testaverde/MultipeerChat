@@ -14,6 +14,7 @@ struct ChatView: View {
     @Environment(MPCInterface.self) var mpcInterface
         
     @State var messageToSend: String = ""
+    @State var isShowable: Bool = false
     
     var body: some View {
         @Bindable var viewModel = viewModel
@@ -44,7 +45,7 @@ struct ChatView: View {
                 GeometryReader { geometry in
                     List((viewModel.searchMessage.isEmpty) ? viewModel.listMessages : viewModel.filteredMessages) { message in
                         LazyVStack(alignment: (message.isHost) ? .trailing : .leading){
-                            Button(message.payload) {}
+                            Button(message.payload) { if(message.isShowable){ print("Open showable component") } }
                                 .frame(width: 170)
                                 .padding(.all, 8)
                                 .font(.system(size: 16))
@@ -64,37 +65,51 @@ struct ChatView: View {
         }
         HStack {
             ZStack{
-                HStack{
+                VStack{
+                    VStack{
+                        Toggle(isOn: $isShowable, label: {
+                            Text("Show Text")
+                                .padding(.all, 10)
+                                .font(.system(size: 16))
+                                .foregroundColor(.white)
+                                .background( .orange )
+                                .cornerRadius(20)
+                        })
+                    }.frame(width: 170)
                     HStack{
-                        TextField("Message", text: $messageToSend)
-                            .padding(.bottom, 15)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .cornerRadius(12)
-                    }
-                    HStack{
-                        Button("Send →") {
-                            viewModel.currentState = MessageState(
-                                idMPC: viewModel.mpcInterface.mpcSession!.username,
-                                payload: messageToSend,
-                                isHost: true,
-                                isShowable: false
-                            )
+                        HStack{
+                            TextField("Message", text: $messageToSend)
+                                .padding(.bottom, 15)
+                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                                .cornerRadius(12)
+                        }
+                        HStack{
                             
-                            mpcInterface.sendState()
+                            Button("Send →") {
+                                viewModel.currentState = MessageState(
+                                    idMPC: viewModel.mpcInterface.mpcSession!.username,
+                                    payload: messageToSend,
+                                    isHost: true,
+                                    isShowable: isShowable
+                                )
+                                
+                                mpcInterface.sendState()
+                                
+                                viewModel.syncListMessages()
+                                messageToSend = ""
+                            }.buttonStyle(BorderlessButtonStyle())
+                                .padding(.horizontal, 20)
+                                .padding(.vertical, 7)
+                                .foregroundColor(.white)
+                                .background(Color.accentColor)
+                                .cornerRadius(12)
+                                .disabled(messageToSend.isEmpty ? true : false)
                             
-                            viewModel.syncListMessages()
-                            messageToSend = ""
-                        }.buttonStyle(BorderlessButtonStyle())
-                            .padding(.horizontal, 20)
-                            .padding(.vertical, 7)
-                            .foregroundColor(.white)
-                            .background(Color.accentColor)
-                            .cornerRadius(12)
-                            .disabled(messageToSend.isEmpty ? true : false)
+                        }
+                        .padding(.bottom, 15)
                     }
-                    .padding(.bottom, 15)
+                    .frame(width: 350)
                 }
-                .frame(width: 350)
             }
         }
     }
