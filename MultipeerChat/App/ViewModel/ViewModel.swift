@@ -16,6 +16,7 @@ import RxRelay
 class ViewModel {
     
     var currentState: MessageState
+    var messageSelected: MessageState
     var recvLastState: MessageState
     var listMessages: [MessageState]
     var mpcInterface: MPCInterface
@@ -34,6 +35,7 @@ class ViewModel {
     
     init(mpcInterface: MPCInterface) {
         self.currentState = zeroState
+        self.messageSelected = zeroState
         self.recvLastState = zeroState
         self.mpcInterface = mpcInterface
         self.listMessages = []

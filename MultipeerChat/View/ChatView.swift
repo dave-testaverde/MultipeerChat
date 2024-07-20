@@ -12,6 +12,7 @@ struct ChatView: View {
     
     @Environment(ViewModel.self) var viewModel
     @Environment(MPCInterface.self) var mpcInterface
+    @Environment(Router.self) var router
         
     @State var messageToSend: String = ""
     @State var isShowable: Bool = false
@@ -45,13 +46,20 @@ struct ChatView: View {
                 GeometryReader { geometry in
                     List((viewModel.searchMessage.isEmpty) ? viewModel.listMessages : viewModel.filteredMessages) { message in
                         LazyVStack(alignment: (message.isHost) ? .trailing : .leading){
-                            Button(message.payload) { if(message.isShowable){ print("Open showable component") } }
-                                .frame(width: 170)
-                                .padding(.all, 8)
-                                .font(.system(size: 16))
-                                .foregroundColor(.white)
-                                .background( (message.isHost) ? .green : .blue)
-                                .cornerRadius(20)
+                            Button(message.payload) {
+                                if(message.isShowable){
+                                    print("Open showable component")
+                                    viewModel.messageSelected = message
+                                    router.navigateTo(route: .messageView)
+                                    //SingleMessage(message: message)
+                                }
+                            }
+                            .frame(width: 170)
+                            .padding(.all, 8)
+                            .font(.system(size: 16))
+                            .foregroundColor(.white)
+                            .background( (message.isHost) ? .green : .blue)
+                            .cornerRadius(20)
                             Text((message.isHost) ? "You" : "Him/Her")
                         }.listRowSeparator(.hidden)
                     }

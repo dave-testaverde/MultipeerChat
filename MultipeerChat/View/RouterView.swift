@@ -38,6 +38,10 @@ struct RouterView: View {
                             ChatView()
                                 .environment(router)
                                 .environment(viewModel)
+                        case .messageView:
+                            MessageView()
+                                .environment(router)
+                                .environment(viewModel)
                     }
                 }
         }
