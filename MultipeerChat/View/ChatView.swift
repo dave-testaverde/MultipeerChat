@@ -48,10 +48,8 @@ struct ChatView: View {
                         LazyVStack(alignment: (message.isHost) ? .trailing : .leading){
                             Button(message.payload) {
                                 if(message.isShowable){
-                                    print("Open showable component")
                                     viewModel.messageSelected = message
                                     router.navigateTo(route: .messageView)
-                                    //SingleMessage(message: message)
                                 }
                             }
                             .frame(width: 170)

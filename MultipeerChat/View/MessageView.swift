@@ -16,6 +16,14 @@ struct MessageView: View {
         @Bindable var viewModel = viewModel
         @Bindable var mpcInterface = viewModel.mpcInterface
         
-        Text(viewModel.messageSelected.payload)
+        var message = viewModel.messageSelected
+        
+        Text(message.payload)
+            .frame(width: 170)
+            .padding(.all, 8)
+            .font(.system(size: 16))
+            .foregroundColor(.white)
+            .background( (message.isHost) ? .green : .blue)
+            .cornerRadius(20)
     }
 }
