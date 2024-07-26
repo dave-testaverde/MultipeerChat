@@ -23,7 +23,15 @@ class ViewModel {
     
     var namePeerConnected: String
     
-    var searchMessage: String = ""
+    var searchMessage: String = "" {
+        willSet{
+            print("new " + newValue)
+        }
+        didSet {
+            print("old " + oldValue)
+            self.notifyEvent()
+        }
+    }
     var filteredMessages: [MessageState] = []
     
     let zeroState = MessageState(idMPC: "", payload: "", isHost: true, isShowable: false)
