@@ -89,12 +89,12 @@ struct ChatView: View {
                         HStack{
                             
                             Button("Send →") {
-                                viewModel.currentState = MessageState(
+                                viewModel.setState(messageState: MessageState(
                                     idMPC: viewModel.mpcInterface.mpcSession!.username,
                                     payload: messageToSend,
                                     isHost: true,
                                     isShowable: isShowable
-                                )
+                                ))
                                 
                                 mpcInterface.sendState()
                                 

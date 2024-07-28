@@ -50,12 +50,12 @@ struct SenderView: View {
                     }
                     HStack {
                         Button("Send →") {
-                            viewModel.currentState = MessageState(
+                            viewModel.setState(messageState: MessageState(
                                 idMPC: viewModel.mpcInterface.mpcSession!.username,
                                 payload: message,
                                 isHost: true,
                                 isShowable: false
-                            )
+                            ))
                             
                             mpcInterface.sendState()
                             

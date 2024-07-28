@@ -52,6 +52,10 @@ class ViewModel {
         setupRx()
     }
     
+    func setState(messageState: MessageState){
+        self.currentState = messageState
+    }
+    
     func syncListMessages(){
         self.listMessages.append(self.currentState)
     }
