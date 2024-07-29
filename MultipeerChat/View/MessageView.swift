@@ -16,7 +16,7 @@ struct MessageView: View {
         @Bindable var viewModel = viewModel
         @Bindable var mpcInterface = viewModel.mpcInterface
         
-        var message = viewModel.messageSelected
+        var message = viewModel.messages.messageSelected
         
         Text(message.payload)
             .frame(width: 170)

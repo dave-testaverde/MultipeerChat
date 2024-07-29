@@ -55,10 +55,10 @@ import os
     
     func send() {
         if !session.connectedPeers.isEmpty {
-            log.info("sendState: \(String(describing: self.viewModel.currentState)) to \(self.session.connectedPeers[0].displayName)")
+            log.info("sendState: \(String(describing: self.viewModel.messages.currentState)) to \(self.session.connectedPeers[0].displayName)")
             do {
                 try session.send(
-                    MessageState.encodeJSON(state: self.viewModel.currentState).data(using: .utf8)!,
+                    MessageState.encodeJSON(state: self.viewModel.messages.currentState).data(using: .utf8)!,
                     toPeers: session.connectedPeers,
                     with: .reliable
                 )
@@ -138,12 +138,12 @@ extension MPCImpl: MCSessionDelegate {
             log.info("didReceive state \(dataString)")
             
             DispatchQueue.main.async {
-                self.viewModel.currentState = MessageState.decodeJSON(json: dataString)
+                var newState: MessageState = MessageState.decodeJSON(json: dataString)
+                newState.isHost = false
                 
-                self.viewModel.currentState.isHost = false
-                self.viewModel.syncListMessages()
-                
-                self.viewModel.recvLastState = self.viewModel.currentState
+                self.viewModel.messages.setState(messageState: newState)
+                self.viewModel.messages.syncListMessages()
+                self.viewModel.messages.lastState = self.viewModel.messages.getState()
             }
         } else {
             log.info("didReceive invalid value \(data.count) bytes")

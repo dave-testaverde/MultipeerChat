@@ -34,7 +34,7 @@ struct SenderView: View {
                             .foregroundColor(.white)
                             .background(Color.blue)
                             .cornerRadius(12)
-                            .disabled(viewModel.listMessages.isEmpty ? true : false)
+                            .disabled(viewModel.messages.listMessages.isEmpty ? true : false)
                     }
                     HStack{
                         Divider().frame(width: 200, height: 1).background(Color.blue)
@@ -50,7 +50,7 @@ struct SenderView: View {
                     }
                     HStack {
                         Button("Send →") {
-                            viewModel.setState(messageState: MessageState(
+                            viewModel.messages.setState(messageState: MessageState(
                                 idMPC: viewModel.mpcInterface.mpcSession!.username,
                                 payload: message,
                                 isHost: true,
@@ -59,7 +59,7 @@ struct SenderView: View {
                             
                             mpcInterface.sendState()
                             
-                            viewModel.syncListMessages()
+                            viewModel.messages.syncListMessages()
                             message = ""
                         }.buttonStyle(BorderlessButtonStyle())
                             .padding(.horizontal, 30)
@@ -88,7 +88,7 @@ struct SenderView: View {
                         Spacer()
                     }
                     HStack {
-                        Text(viewModel.recvLastState.payload)
+                        Text(viewModel.messages.lastState.payload)
                             .padding([.horizontal], 75.0)
                             .padding(.bottom, 24)
                             .foregroundColor(Color.blue)

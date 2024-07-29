@@ -41,7 +41,7 @@ struct PairView: View {
                         }
                 }
                 .onAppear(perform: {
-                    viewModel.listMessages = []
+                    viewModel.messages.reset()
                 })
             } else {
                 SenderView()

@@ -26,7 +26,7 @@ struct ChatView: View {
             ZStack{
                 HStack{
                     HStack{
-                        TextField("Search", text: $viewModel.searchMessage)
+                        TextField("Search", text: $viewModel.messages.searchMessage)
                             .padding(.bottom, 15)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .cornerRadius(12)
@@ -41,11 +41,11 @@ struct ChatView: View {
         HStack {
             NavigationSplitView {
                 GeometryReader { geometry in
-                    List((viewModel.searchMessage.isEmpty) ? viewModel.listMessages : viewModel.filteredMessages) { message in
+                    List((viewModel.messages.searchMessage.isEmpty) ? viewModel.messages.listMessages : viewModel.messages.filteredMessages) { message in
                         LazyVStack(alignment: (message.isHost) ? .trailing : .leading){
                             Button(message.payload) {
                                 if(message.isShowable){
-                                    viewModel.messageSelected = message
+                                    viewModel.messages.messageSelected = message
                                     router.navigateTo(route: .messageView)
                                 }
                             }
@@ -89,7 +89,7 @@ struct ChatView: View {
                         HStack{
                             
                             Button("Send →") {
-                                viewModel.setState(messageState: MessageState(
+                                viewModel.messages.setState(messageState: MessageState(
                                     idMPC: viewModel.mpcInterface.mpcSession!.username,
                                     payload: messageToSend,
                                     isHost: true,
@@ -98,7 +98,7 @@ struct ChatView: View {
                                 
                                 mpcInterface.sendState()
                                 
-                                viewModel.syncListMessages()
+                                viewModel.messages.syncListMessages()
                                 messageToSend = ""
                             }.buttonStyle(BorderlessButtonStyle())
                                 .padding(.horizontal, 20)
