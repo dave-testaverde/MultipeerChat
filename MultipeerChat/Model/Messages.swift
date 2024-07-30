@@ -15,17 +15,13 @@ class Messages {
     static let zeroState = MessageState(idMPC: "", payload: "", isHost: true, isShowable: false)
     
     /// _ Observable component  _
-    var currentState: MessageState {
+    private var currentState: MessageState {
         willSet{
             print("change state")
         }
     }
     var searchMessage: String = "" {
-        willSet{
-            print("new " + newValue)
-        }
         didSet {
-            print("old " + oldValue)
             self.notifyEvent()
         }
     }

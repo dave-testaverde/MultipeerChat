@@ -55,10 +55,10 @@ import os
     
     func send() {
         if !session.connectedPeers.isEmpty {
-            log.info("sendState: \(String(describing: self.viewModel.messages.currentState)) to \(self.session.connectedPeers[0].displayName)")
+            log.info("sendState: \(String(describing: self.viewModel.messages.getState())) to \(self.session.connectedPeers[0].displayName)")
             do {
                 try session.send(
-                    MessageState.encodeJSON(state: self.viewModel.messages.currentState).data(using: .utf8)!,
+                    MessageState.encodeJSON(state: self.viewModel.messages.getState()).data(using: .utf8)!,
                     toPeers: session.connectedPeers,
                     with: .reliable
                 )
